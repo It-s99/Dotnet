@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--#if (AuthoringMode)-->
+  <PropertyGroup>
+    <!-- Modify these constants to enable/disable a feature to debug the template. Note that this only affects the C#. -->
+    <DefineConstants>$(DefineConstants);Serilog</DefineConstants>
+    <!-- Workaround to build this project: https://github.com/dotnet/templating/issues/1438 -->
+    <Serilog>true</Serilog>
+  </PropertyGroup>
+  <!--#endif-->
+
+  <PropertyGroup Label="Build">
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package Versions">
+    <PackageReference Include="coverlet.collector" PrivateAssets="all" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+    <PackageReference Include="Microsoft.Orleans.BroadcastChannel" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Streaming" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.TestingHost" Version="7.2.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Sinks.XUnit" Version="3.0.5" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="xunit" Version="2.5.1" />
+    <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" Version="2.5.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Label="Project References">
+    <ProjectReference Include="..\..\Source\OrleansTemplate.Abstractions\OrleansTemplate.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Source\OrleansTemplate.Grains\OrleansTemplate.Grains.csproj" />
+  </ItemGroup>
+
+</Project>

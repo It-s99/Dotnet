@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <!--#if (AuthoringMode)-->
+  <PropertyGroup>
+    <!-- Modify these constants to enable/disable a feature to debug the template. Note that this only affects the C#. -->
+    <DefineConstants>$(DefineConstants);ApplicationInsights;TLS;Docker;HealthCheck;OpenTelemetry;Serilog</DefineConstants>
+    <!-- Workaround to build this project: https://github.com/dotnet/templating/issues/1438 -->
+    <ApplicationInsights>true</ApplicationInsights>
+    <TLS>true</TLS>
+    <Docker>true</Docker>
+    <OpenTelemetry>true</OpenTelemetry>
+    <Serilog>true</Serilog>
+  </PropertyGroup>
+  <!--#endif-->
+
+  <PropertyGroup Label="Build">
+    <TargetFramework>net7.0</TargetFramework>
+    <!-- Used to store connection strings and other sensitive settings, so you don't have to check them into your source
+         control provider. Only use this in Development, it is not intended for Production use.
+         See http://docs.asp.net/en/latest/security/app-secrets.html -->
+    <UserSecretsId>OrleansTemplate.Server-113f2d04-69f0-40c3-8797-ba3f356dd812</UserSecretsId>
+    <!--#if (!IIS)-->
+    <!-- Disable publishing of a web.config file for IIS when calling dotnet publish. -->
+    <!--#endif-->
+    <IsTransformWebConfigDisabled Condition="'$(IIS)' == 'false'">true</IsTransformWebConfigDisabled>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Docker" Condition="'$(Docker)' == 'true'">
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <Authors>PROJECT-AUTHOR-XML</Authors>
+    <Company>PROJECT-AUTHOR-XML</Company>
+    <Product>PROJECT-TITLE-XML</Product>
+    <Description>PROJECT-DESCRIPTION-XML</Description>
+    <Copyright>Copyright © PROJECT-AUTHOR-XML. All rights Reserved</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="Boxed.AspNetCore" Version="9.0.1" />
+    <PackageReference Include="OrleansDashboard" Version="7.2.2" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" Condition="'$(ApplicationInsights)' == 'true'" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Orleans.BroadcastChannel" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Connections.Security" Version="7.2.1" Condition="'$(TLS)' == 'true'" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Reminders.AzureStorage" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Serialization.SystemTextJson" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Streaming.AzureStorage" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Transactions" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Orleans.Transactions.AzureStorage" Version="7.2.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" Condition="'$(Docker)' == 'true'" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0" Condition="'$(OpenTelemetry)' == 'true'" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.6.0" Condition="'$(OpenTelemetry)' == 'true'" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc9.14" Condition="'$(OpenTelemetry)' == 'true'" />
+    <PackageReference Include="Serilog" Version="3.0.1" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Enrichers.Span" Version="3.1.0" Condition="'$(Serilog)' == 'true' AND '$(OpenTelemetry)' == 'true'" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" Condition="'$(Serilog)' == 'true'" />
+    <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.0.0" Condition="'$(Serilog)' == 'true' AND '$(ApplicationInsights)' == 'true'" />
+  </ItemGroup>
+
+  <ItemGroup Label="Project References">
+    <ProjectReference Include="..\OrleansTemplate.Abstractions\OrleansTemplate.Abstractions.csproj" />
+    <ProjectReference Include="..\OrleansTemplate.Grains\OrleansTemplate.Grains.csproj" />
+  </ItemGroup>
+
+</Project>

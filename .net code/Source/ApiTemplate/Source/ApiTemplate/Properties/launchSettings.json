@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:44299/",
+      //#if (HttpsEverywhere)
+      "sslPort": 44300
+      ////#else
+      //"sslPort": 0
+      //#endif
+    }
+  },
+  "profiles": {
+    //#if (Docker)
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "environmentVariables": {
+        //#if (HttpsEverywhere)
+        "Kestrel__Endpoints__Http__Url": "http://*",
+        "Kestrel__Endpoints__Https__Url": "https://*",
+
+        // To run the application with Docker over HTTPS we need to use a developer certificate. This can be created and exported to a
+        // file using the dev-certs tool:
+        // dotnet dev-certs https --clean
+        // Windows (PowerShell): dotnet dev-certs https --export-path $env:APPDATA\ASP.NET\Https\ApiTemplate.pfx --password securepassword
+        // Mac/Linux: dotnet dev-certs https --export-path ${HOME}/.aspnet/https/ApiTemplate.pfx  --password securepassword
+        // dotnet dev-certs https --trust
+        // https://docs.microsoft.com/en-us/visualstudio/containers/container-build?view=vs-2019#ssl-enabled-aspnet-core-apps
+        "Kestrel__Certificates__Default__Path": "/root/.aspnet/https/ApiTemplate.pfx",
+        "Kestrel__Certificates__Default__Password": "securepassword"
+        ////#else
+        //"Kestrel__Endpoints__Http__Url": "http:////*"
+        //#endif
+      }
+    },
+    //#endif
+    "Kestrel": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "",
+      //#if (HttpsEverywhere)
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      ////#else
+      //"applicationUrl": "http:////localhost:5000",
+      //#endif
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Kestrel Production": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "",
+      //#if (HttpsEverywhere)
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      ////#else
+      //"applicationUrl": "http:////localhost:5000",
+      //#endif
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    // dotnet watch run must be run without the Visual Studio debugger using CTRL+F5.
+    "Watch Kestrel (CTRL+F5)": {
+      "commandName": "Executable",
+      "executablePath": "dotnet",
+      "workingDirectory": "$(ProjectDir)",
+      "commandLineArgs": "watch",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+      }
+    },
+    "Watch Kestrel Production (CTRL+F5)": {
+      "commandName": "Executable",
+      "executablePath": "dotnet",
+      "workingDirectory": "$(ProjectDir)",
+      "commandLineArgs": "watch",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express Production": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    //#if (IIS)
+    // Run the application using full IIS using its development time support. This requires some setup, see:
+    // https://blogs.msdn.microsoft.com/webdev/2017/07/13/development-time-iis-support-for-asp-net-core-applications/
+    "IIS (Setup Required)": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Production (Setup Required)": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    //#endif
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      //#if (HttpsEverywhere)
+      "launchUrl": "https://localhost:5001",
+      ////#else
+      //"launchUrl": "http:////localhost:5000",
+      //#endif
+      "environmentVariables": {
+        //#if (HttpsEverywhere)
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+        ////#else
+        //"ASPNETCORE_URLS": "http:////localhost:5000",
+        //#endif
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "distributionName": ""
+    },
+    "WSL Production": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      //#if (HttpsEverywhere)
+      "launchUrl": "https://localhost:5001",
+      ////#else
+      //"launchUrl": "http:////localhost:5000",
+      //#endif
+      "environmentVariables": {
+        //#if (HttpsEverywhere)
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+        ////#else
+        //"ASPNETCORE_URLS": "http:////localhost:5000",
+        //#endif
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "distributionName": ""
+    }
+  }
+}

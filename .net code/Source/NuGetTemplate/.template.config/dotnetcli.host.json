@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "Framework": {
+      "longName": "framework"
+    },
+    "Nullable": {
+      "longName": "nullable"
+    },
+    "Sign": {
+      "longName": "sign"
+    },
+    "Title": {
+      "longName": "title"
+    },
+    "TitleXmlEncoded": {
+      "isHidden": true
+    },
+    "Description": {
+      "longName": "description"
+    },
+    "DescriptionXmlEncoded": {
+      "isHidden": true
+    },
+    "Author": {
+      "longName": "author"
+    },
+    "AuthorXmlEncoded": {
+      "isHidden": true
+    },
+    "Tags": {
+      "longName": "tags"
+    },
+    "TagsXmlEncoded": {
+      "isHidden": true
+    },
+    "Contact": {
+      "longName": "contact"
+    },
+    "ContactXmlEncoded": {
+      "isHidden": true
+    },
+    "Comments": {
+      "longName": "comments"
+    },
+    "ReadMe": {
+      "longName": "readme"
+    },
+    "EditorConfig": {
+      "longName": "editorconfig"
+    },
+    "SourceControl": {
+      "longName": "source-control"
+    },
+    "GitHubUsername": {
+      "longName": "github-username"
+    },
+    "GitHubProject": {
+      "longName": "github-project"
+    },
+    "License": {
+      "longName": "license"
+    },
+    "AnalysisMode": {
+      "longName": "analysis-mode"
+    },
+    "ImplicitUsings": {
+      "longName": "implicit-usings"
+    },
+    "IsTrimmable": {
+      "longName": "trimmable"
+    },
+    "TreatWarningsAsErrors": {
+      "longName": "treat-warnings-as-errors"
+    },
+    "StyleCop": {
+      "longName": "style-cop"
+    },
+    "Tests": {
+      "longName": "tests"
+    },
+    "AppVeyor": {
+      "longName": "appveyor"
+    },
+    "AzurePipelines": {
+      "longName": "azure-pipelines"
+    },
+    "GitHubActions": {
+      "longName": "github-actions"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+![.NET Boxed Banner](../Images/Banner.png)
+
+![NuGet Package Boxed Preview Image](../Images/NuGet-Preview.png)
+
+## Walk Through Guide
+
+Read [The Fastest NuGet Package Ever Published (Probably)](https://rehansaeed.com/the-fastest-nuget-package-ever-published-probably/) for a full walk through guide with screenshots on how you can create a brand new project using this template and get a NuGet package published in a couple of minutes. 
+
+## Optional Feature Selection
+
+The NuGet package project template uses `dotnet new` to enable you to turn features of the project template on or off. Find out more about `dotnet new` [here](http://rehansaeed.com/custom-project-templates-using-dotnet-new/).
+
+#### Framework
+
+- **Framework** (Default=net5.0) - The target framework for the project.
+- **Nullable** (Default=On) - Enables C# 8 nullable reference types.
+- **Sign** (Default=On) - Signs the NuGet package.
+
+#### Project
+
+- **Title** - The name of the project which determines the assembly product name.
+- **Description** - A description of the project which determines the assembly description.
+- **Author** - The name of the author of the project which determines the assembly author and copyright information.
+- **Tags** - A semi-colon `;` delimited list of tags for the NuGet package.
+- **Contact** - The contact details to use if someone wants to contact you about a security vulnerability or code of conduct issues.
+- **Comments** (Default=On) - Require all members to be commented.
+- **ReadMe** (Default=On) - Add a README.md markdown file describing the project.
+- **EditorConfig** (Default=On) - Add a .editorconfig file to set a fixed code style.
+- **License** - The legal license applied to the source code in this project.
+  - **MIT** (Default) - The MIT license.
+  - **None** - No license, the source code cannot be legally shared.
+- **AnalysisMode** - The selection of code analysis rules to enable.
+  - **Default** (Default) - Enables the default minimum set of code analysis rules.
+  - **AllEnabledByDefault** - Enables all code analysis rules.
+  - **AllDisabledByDefault** - Disables all code analysis rules.
+- **ImplicitUsings** (Default=On) - Enables implicit using statements in all projects which adds some default System.* namespaces.
+- **IsTrimmable** (Default=Off) - Enables the library for trimming which reduces the size of applications by removing unused code.
+- **TreatWarningsAsErrors** (Default=On) - Treat warnings as errors.
+- **StyleCop** (Default=On) - Adds and enforces StyleCop analysers.
+- **Tests** (Default=On) - Adds a unit test project.
+
+#### Source Control
+
+- **SourceControl** - Select which source control provider you are using if any, to add provider specific features.
+  - **GitHub** (Default) - Adds source link, .github directory containing a code of conduct, contributing guide, pull request template and issue templates.
+  - **None** - No source control provider is being used.
+- **GitHubUsername** - Your GitHub username or organisation name that the project lives under.
+- **GitHubProject** - The name of your GitHub project.
+
+#### Continuous Integration (CI)
+
+- **GitHubActions** (Default=On) - Adds GitHub Actions continuous integration, automatic release drafting and [CodeQL](https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning) security scanning.
+- **AppVeyor** (Default=Off) - Adds AppVeyor continuous integration build file `appveyor.yml`.
+- **AzurePipelines** (Default=Off) - Adds Azure Pipelines continuous integration build file `azure-pipelines.yml`.
+
+## Always On Features
+
+- **Sign** - The package is signed. However, you should change the .snk file.
+- **SourceLink** - During debugging, you can step into code from your NuGet package using [Source Link](https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/sourcelink).
+
+## How can I install it?
+
+1. Install the latest [.NET Core SDK](https://dot.net).
+2. Run `dotnet new --install Boxed.Templates` to install the project templates.
+
+## How can I use it?
+
+#### Using Visual Studio:
+1. Select .NET Boxed from the project type drop down.
+2. Select the .NET Boxed template you want to install and follow the instructions.
+![Visual Studio New Project Dialogue](https://github.com/Dotnet-Boxed/Templates/blob/main/Images/VisualStudio-NewProject.png)
+
+#### Using the CLI:
+1. Choose a project template i.e. `api`, `graphql`, `nuget`, `orleans`.
+2. Run `dotnet new api --help` to see how to select the feature of the project.
+3. Run `dotnet new api --name "MyProject"` along with any other custom options to create a project from the template.
+
+## Release Notes and To-Do List
+You can find release notes for each version [here](https://github.com/Dotnet-Boxed/Templates/releases) and a To-Do list of new features and enhancements coming soon in the [projects](https://github.com/Dotnet-Boxed/Templates/projects) tab.
+
+## Contributing
+
+Please view the [Contributing](/.github/CONTRIBUTING.md) guide for more information.

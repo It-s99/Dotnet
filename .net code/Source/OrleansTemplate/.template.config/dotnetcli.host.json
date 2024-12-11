@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "Title": {
+      "longName": "title"
+    },
+    "TitleXmlEncoded": {
+      "isHidden": true
+    },
+    "Description": {
+      "longName": "description"
+    },
+    "DescriptionXmlEncoded": {
+      "isHidden": true
+    },
+    "Author": {
+      "longName": "author"
+    },
+    "AuthorXmlEncoded": {
+      "isHidden": true
+    },
+    "Contact": {
+      "longName": "contact"
+    },
+    "ContactXmlEncoded": {
+      "isHidden": true
+    },
+    "EditorConfig": {
+      "longName": "editorconfig"
+    },
+    "SourceControl": {
+      "longName": "source-control"
+    },
+    "GitHubUsername": {
+      "longName": "github-username"
+    },
+    "GitHubProject": {
+      "longName": "github-project"
+    },
+    "ReadMe": {
+      "longName": "readme"
+    },
+    "TreatWarningsAsErrors": {
+      "longName": "treat-warnings-as-errors"
+    },
+    "OpenTelemetry": {
+      "longName": "open-telemetry"
+    },
+    "Logging": {
+      "longName": "logging"
+    },
+    "ApplicationInsights": {
+      "longName": "app-insights"
+    },
+    "ApplicationInsightsKey": {
+      "longName": "app-insights-key"
+    },
+    "HealthCheck": {
+      "longName": "health-check"
+    },
+    "HttpPort": {
+      "longName": "http-port"
+    },
+    "TLS": {
+      "longName": "tls"
+    },
+    "IntegrationTest": {
+      "longName": "integration-test"
+    },
+    "StyleCop": {
+      "longName": "style-cop"
+    },
+    "Docker": {
+      "longName": "docker"
+    },
+    "DockerRegistry": {
+      "longName": "docker-registry"
+    },
+    "GitHubActions": {
+      "longName": "github-actions"
+    },
+    "SkipInstallAzuriteEmulator": {
+      "longName": "no-install-azurite-emulator"
+    },
+    "SkipStartAzuriteEmulator": {
+      "longName": "no-start-azurite-emulator"
+    }
+  }
+}

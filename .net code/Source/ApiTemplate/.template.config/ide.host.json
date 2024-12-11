@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "defaultSymbolVisibility": true,
+  "icon": "icon.png",
+  "learnMoreLink": "https://github.com/Dotnet-Boxed/Templates/blob/main/Docs/API.md",
+  "order": 0,
+  "symbolInfo": [
+    {
+      "id": "SkipOpenToDo",
+      "isVisible": false
+    }
+  ]
+}
